@@ -3894,12 +3894,6 @@ GumboOutput* gumbo_parse_with_options(
     doc_type->system_identifier = gumbo_copy_stringz(&parser, "");
   }
 
-  if (/*options->show_errors && */ has_error) {
-    for (int i = 0; i < parser._output->errors.length; ++i) {
-      gumbo_print_caret_diagnostic(&parser, parser._output->errors.data[i], ((GumboError *)parser._output->errors.data[i])->original_text);
-    }
-  }
-
   parser_state_destroy(&parser);
   gumbo_tokenizer_state_destroy(&parser);
   return parser._output;
